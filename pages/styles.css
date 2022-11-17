@@ -3,6 +3,10 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+h1{
+    font-family: 'Poppins';
+}
+
 #productGrid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
