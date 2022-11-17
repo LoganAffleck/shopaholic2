@@ -27,13 +27,12 @@ const ProductGrid = (props: { collection: string; max: number; }) => {
 
   },[props.collection])
 
-  let counter = 0;
+ 
 
   return(
     <div id='productGrid'>
      {products.map((product : any)=> {
-      counter++
-      if (counter <= props.max){
+     
       return(
         <div id='productItem'>
           <img src={product.image} width='100%'></img>
@@ -42,8 +41,8 @@ const ProductGrid = (props: { collection: string; max: number; }) => {
           <button id="shopButton">Shop Now</button>
         </div>
       )
-      }
-      return
+      
+     
      })}
     </div>
   )
