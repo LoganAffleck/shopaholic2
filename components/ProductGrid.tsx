@@ -27,12 +27,17 @@ const ProductGrid = (props: { collection: string; max: number; }) => {
 
   },[props.collection])
 
- 
+ let limit = 0;
 
   return(
     <div id='productGrid'>
      {products.map((product : any)=> {
-     
+      
+      limit++;
+      if(limit > props.max){
+        return;
+      }
+
       return(
         <div id='productItem'>
           <img src={product.image} width='100%'></img>
@@ -41,6 +46,7 @@ const ProductGrid = (props: { collection: string; max: number; }) => {
           <button id="shopButton">Shop Now</button>
         </div>
       )
+      
       
      
      })}
