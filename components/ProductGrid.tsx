@@ -29,7 +29,7 @@ const ProductGrid = (props: { collection: string; max: number; }) => {
 
   return(
     <div id='productGrid'>
-     {products.map((product)=> {
+     {products.map((product : any)=> {
 
       return(
         <div id='productItem'>
