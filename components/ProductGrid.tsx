@@ -2,8 +2,10 @@ import { Builder, builder } from "@builder.io/react";
 import React, {useState, useEffect} from 'react';
 
 const ProductGrid = (props: { collection: string; max: number; }) => {
+
+
     
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([] as any);
 
   builder.init('f5329e4d268247c0a0f00e29aa17c788')
 
