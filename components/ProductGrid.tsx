@@ -15,7 +15,7 @@ const ProductGrid = (props: { collection: string; max: number; }) => {
 
     
     const getData = async () =>{
-      let result = await builder.getAll(`${props.collection.toLowerCase()}-shoes`);
+      let result = await builder.getAll(`${props.collection ? props.collection.toLowerCase() : 'fabric'}-shoes`);
       return result
     } 
 
@@ -36,7 +36,7 @@ const ProductGrid = (props: { collection: string; max: number; }) => {
   return(
     <div id='productGrid'>
      {products.map((product)=> {
-      
+
       return(
         <div id='productItem'>
           <img src={product.image} width='100%'></img>
