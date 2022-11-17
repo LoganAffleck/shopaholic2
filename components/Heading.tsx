@@ -4,8 +4,7 @@ import React from 'react';
 export const Heading = (props: { title: string; color: string; }) => {
   return(
     <h1 style={{
-        'color': props.color,
-        'fontFamily': 'sans-serif',
+        'color': props.color
     }}>
         {props.title}
     </h1>
