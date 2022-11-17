@@ -1,13 +1,9 @@
 import { Builder, builder } from "@builder.io/react";
 import React, {useState, useEffect} from 'react';
-import { getAsyncProps } from '@builder.io/utils';
-
 
 const ProductGrid = (props: { collection: string; max: number; }) => {
-  
-  
+    
   const [products, setProducts] = useState([]);
-
 
   builder.init('f5329e4d268247c0a0f00e29aa17c788')
 
@@ -29,10 +25,6 @@ const ProductGrid = (props: { collection: string; max: number; }) => {
 
   },[props.collection])
 
-
-
-    
-  
   return(
     <div id='productGrid'>
      {products.map((product)=> {
@@ -67,7 +59,5 @@ Builder.registerComponent(ProductGrid, {
     }
   ],
 });
-
-
 
 export default ProductGrid;
