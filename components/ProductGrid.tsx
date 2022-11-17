@@ -1,37 +1,52 @@
 import { Builder, builder } from "@builder.io/react";
 import React, {useState, useEffect} from 'react';
+import { getAsyncProps } from '@builder.io/utils';
 
 
-
-const ProductGrid = (props: { title: string; color: string; }) => {
+const ProductGrid = (props: { collection: string; max: number; }) => {
   
   
-  const [collection, setCollection] = useState(0);
+  const [products, setProducts] = useState([]);
 
 
   builder.init('f5329e4d268247c0a0f00e29aa17c788')
 
-  useEffect(() => {
+  useEffect( () => {
 
-    builder.get('fabric-shoes').promise().then(({ data }) => {
-      // Do something with the data
-      setCollection(data)
-    })
-  
-  },[])
+    
+    const getData = async () =>{
+      let result = await builder.getAll(`${props.collection.toLowerCase()}-shoes`);
+      return result
+    } 
 
-  if(collection){
-  console.log(collection);
-  }
+    getData().then((value)=>{
+      let result = value;
+      
+      let shortenedData = result.map(entry => entry.data)
+      setProducts(shortenedData)});
+    
+
+
+  },[props.collection])
+
+
+
     
   
   return(
-    <h1 style={{
-        'color': props.color,
-        'fontFamily': 'sans-serif',
-    }}>
-        {props.title}
-    </h1>
+    <div id='productGrid'>
+     {products.map((product)=> {
+      
+      return(
+        <div id='productItem'>
+          <img src={product.image} width='100%'></img>
+          <p><strong>{product.title}</strong></p>
+          <p>${product.price}</p>
+          <button id="shopButton">Shop Now</button>
+        </div>
+      )
+     })}
+    </div>
   )
 }
 
@@ -39,17 +54,20 @@ Builder.registerComponent(ProductGrid, {
   name: "ProductGrid",
   inputs: [
     {
-      name: "title",
+      name: "collection",
       type: "text",
-      defaultValue: 'I am a heading!',
+      defaultValue: 'Fabric',
       required: true,
+      enum: ['Fabric', 'Marble', 'Matte']
     },
     {
-      name: "color",
-      type: "color",
-      defaultValue: '#AC7EF4',
-    },
+      name: "max",
+      type: "number",
+      defaultValue: 4,
+    }
   ],
 });
+
+
 
 export default ProductGrid;

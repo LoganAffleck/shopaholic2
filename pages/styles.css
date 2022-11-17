@@ -2,3 +2,42 @@ body{
     margin: 0px;
     font-family: 'Poppins', sans-serif;
 }
+
+#productGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+#productItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#shopButton{
+    outline: unset;
+    border: unset;
+    background-color: unset;
+    font-weight: 700;
+    font-family: poppins;
+    border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+
+@media (max-width: 1000px) {
+    #productGrid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+
+@media (max-width: 640px) {
+    #productGrid{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+  }
